@@ -2,6 +2,7 @@ import getWeatherData from './functions/weatherAPI';
 
 const renderContents = (city) => {
   const contents = document.createElement('div');
+  contents.classList.add('contents');
 
   const location = document.createElement('div');
   location.classList.add('location');

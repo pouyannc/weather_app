@@ -1,10 +1,20 @@
 *{
   box-sizing: border-box;;
+  margin: 0px;
+  font-family: sans-serif;
+}
+
+.container {
+  display:flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+  background-color: rgb(236, 233, 233);
 }
 
 .header-right {
@@ -14,6 +24,15 @@
 
 #search-icon {
   width: 30px;
+}
+
+.contents {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: rgb(44, 44, 117);
+  color: white;
 }
 
 .location {
