@@ -1,0 +1,25 @@
+*{
+  box-sizing: border-box;;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-right {
+  display: flex;
+  gap: 5px;
+}
+
+#search-icon {
+  width: 30px;
+}
+
+.location {
+  font-size: 34px;
+}
+
+.temp-now {
+  font-size: 42px;
+}
