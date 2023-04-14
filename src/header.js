@@ -5,14 +5,16 @@ const renderHeader = () => {
   header.classList.add('header');
 
   const headerLeft = document.createElement('div');
-
-  const headerRight = document.createElement('form');
+  const headerRight = document.createElement('div');
   headerRight.classList.add('header-right');
-  headerRight.appendChild(Object.assign(
+
+  const searchForm = document.createElement('form');
+  searchForm.classList.add('search-form');
+  searchForm.appendChild(Object.assign(
     document.createElement('img'),
     { for: 'search', id: 'search-icon', src: searchIcon },
   ));
-  headerRight.appendChild(Object.assign(
+  searchForm.appendChild(Object.assign(
     document.createElement('input'),
     {
       type: 'text',
@@ -21,6 +23,14 @@ const renderHeader = () => {
       required: true,
     },
   ));
+
+  const unitSwitch = document.createElement('div');
+  unitSwitch.classList.add('unit-switch');
+  unitSwitch.appendChild(Object.assign(document.createElement('div'), { textContent: '°C' }));
+  unitSwitch.appendChild(Object.assign(document.createElement('div'), { textContent: '°F' }));
+
+  headerRight.appendChild(searchForm);
+  headerRight.appendChild(unitSwitch);
 
   header.appendChild(headerLeft);
   header.appendChild(headerRight);

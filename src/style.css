@@ -19,6 +19,7 @@
 
 .header-right {
   display: flex;
+  align-items: center;
   gap: 5px;
 }
 
@@ -35,10 +36,37 @@
   color: white;
 }
 
+.current-weather {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
 .location {
   font-size: 34px;
 }
 
 .temp-now {
-  font-size: 42px;
+  font-size: 62px;
+}
+
+.weather-icon {
+  width: 80px;
+}
+
+.forecast-week {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.weather-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rain-chance {
+  font-size: 1px;
 }

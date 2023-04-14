@@ -1,6 +1,6 @@
-import getWeatherData from './functions/weatherAPI';
+import { getWeatherData, getForecastData } from './functions/weatherAPI';
 
-const renderContents = (city) => {
+const renderContents = (city, units) => {
   const contents = document.createElement('div');
   contents.classList.add('contents');
 
@@ -8,12 +8,74 @@ const renderContents = (city) => {
   location.classList.add('location');
   getWeatherData(city).then((data) => { location.textContent = `${data.location.name}, ${data.location.country}`; });
 
+  // CURRENT WEATHER ELEMENT
+  const currentWeather = document.createElement('div');
+  currentWeather.classList.add('current-weather');
+
   const temperature = document.createElement('div');
   temperature.classList.add('temp-now');
-  getWeatherData(city).then((data) => { temperature.textContent = `${data.current.temp_c}°C`; });
+  if (units === 'c') {
+    getWeatherData(city).then((data) => { temperature.textContent = `${Math.round(data.current.temp_c)}°C`; });
+  } else if (units === 'f') {
+    getWeatherData(city).then((data) => { temperature.textContent = `${Math.round(data.current.temp_f)}°F`; });
+  }
+
+  const condition = document.createElement('div');
+  condition.classList.add('codition');
+  getWeatherData(city).then((data) => { condition.textContent = data.current.condition.text; });
+
+  const weatherIcon = document.createElement('img');
+  weatherIcon.classList.add('weather-icon');
+  getWeatherData(city).then((data) => { weatherIcon.src = data.current.condition.icon; });
+
+  currentWeather.appendChild(temperature);
+  currentWeather.appendChild(condition);
+  currentWeather.appendChild(weatherIcon);
+
+  // WEEKLY WEATHER ELEMENT
+  const forecastWeek = document.createElement('div');
+  forecastWeek.classList.add('forecast-week');
+
+  getForecastData(city).then((data) => {
+    data.forecast.forecastday.forEach((day) => {
+      const weatherRow = document.createElement('div');
+      weatherRow.classList.add('weather-row');
+
+      const date = new Date(day.date);
+      const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      weatherRow.appendChild(Object.assign(
+        document.createElement('div'),
+        { textContent: weekday[date.getDay()] },
+      ));
+      weatherRow.appendChild(Object.assign(
+        document.createElement('div'),
+        { textContent: ` 💧 ${day.day.daily_chance_of_rain}%`, class: 'rain-chance' },
+      ));
+      weatherRow.appendChild(Object.assign(
+        document.createElement('img'),
+        { src: day.day.condition.icon },
+      ));
+      if (units === 'c') {
+        weatherRow.appendChild(Object.assign(
+          document.createElement('div'),
+          { textContent: `High: ${Math.round(day.day.maxtemp_c)}°C Low: ${Math.round(day.day.mintemp_c)}°C ` },
+        ));
+      } else if (units === 'f') {
+        weatherRow.appendChild(Object.assign(
+          document.createElement('div'),
+          { textContent: `High: ${Math.round(day.day.maxtemp_f)}°F   Low: ${Math.round(day.day.mintemp_f)}°F ` },
+        ));
+      }
+
+      forecastWeek.appendChild(weatherRow);
+    });
+  });
+
+  getForecastData(city).then((data) => { console.log(data); });
 
   contents.appendChild(location);
-  contents.appendChild(temperature);
+  contents.appendChild(currentWeather);
+  contents.appendChild(forecastWeek);
 
   return contents;
 };
