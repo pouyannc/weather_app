@@ -49,21 +49,21 @@ const renderContents = (city, units) => {
       ));
       weatherRow.appendChild(Object.assign(
         document.createElement('div'),
-        { textContent: ` 💧 ${day.day.daily_chance_of_rain}%`, class: 'rain-chance' },
+        { textContent: ` 💧 ${day.day.daily_chance_of_rain}%`, classList: 'rain-chance' },
       ));
       weatherRow.appendChild(Object.assign(
         document.createElement('img'),
-        { src: day.day.condition.icon },
+        { src: day.day.condition.icon, classList: 'row-weather-icon' },
       ));
       if (units === 'c') {
         weatherRow.appendChild(Object.assign(
           document.createElement('div'),
-          { textContent: `High: ${Math.round(day.day.maxtemp_c)}°C Low: ${Math.round(day.day.mintemp_c)}°C ` },
+          { textContent: `High: ${Math.round(day.day.maxtemp_c)}° Low: ${Math.round(day.day.mintemp_c)}°` },
         ));
       } else if (units === 'f') {
         weatherRow.appendChild(Object.assign(
           document.createElement('div'),
-          { textContent: `High: ${Math.round(day.day.maxtemp_f)}°F   Low: ${Math.round(day.day.mintemp_f)}°F ` },
+          { textContent: `High: ${Math.round(day.day.maxtemp_f)}° Low: ${Math.round(day.day.mintemp_f)}°` },
         ));
       }
 

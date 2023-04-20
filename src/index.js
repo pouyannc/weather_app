@@ -25,8 +25,12 @@ const unitSwitch = document.querySelector('.unit-switch');
 unitSwitch.firstChild.addEventListener('click', () => {
   units = 'c';
   container.replaceChild(renderContents(city, units), container.childNodes[1]);
+  unitSwitch.firstChild.classList.add('unit-bordered');
+  unitSwitch.lastChild.classList.remove('unit-bordered');
 });
 unitSwitch.lastChild.addEventListener('click', () => {
   units = 'f';
   container.replaceChild(renderContents(city, units), container.childNodes[1]);
+  unitSwitch.firstChild.classList.remove('unit-bordered');
+  unitSwitch.lastChild.classList.add('unit-bordered');
 });

@@ -23,16 +23,35 @@
   gap: 5px;
 }
 
+.search-form {
+  display: flex;
+}
+
 #search-icon {
   width: 30px;
+}
+
+.unit-switch{
+  display:flex;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.unit-switch * {
+  padding: 5px 15px;
+}
+
+.unit-bordered {
+  border: 2px solid black;
+  border-radius: 4px;
 }
 
 .contents {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  background-color: rgb(44, 44, 117);
+  padding: 20px;
+  background-color: rgb(26, 26, 40);
   color: white;
 }
 
@@ -63,10 +82,20 @@
 
 .weather-row {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
   align-items: center;
+  gap: 8px;
+}
+
+.weather-row * {
+  flex: 1 1 0px;
+}
+
+.row-weather-icon {
+  max-width: 100px;
+  padding:0px 20px;
 }
 
 .rain-chance {
-  font-size: 1px;
+  font-size: 14px;
 }

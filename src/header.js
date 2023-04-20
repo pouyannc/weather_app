@@ -26,7 +26,7 @@ const renderHeader = () => {
 
   const unitSwitch = document.createElement('div');
   unitSwitch.classList.add('unit-switch');
-  unitSwitch.appendChild(Object.assign(document.createElement('div'), { textContent: '°C' }));
+  unitSwitch.appendChild(Object.assign(document.createElement('div'), { textContent: '°C', classList: 'unit-bordered' }));
   unitSwitch.appendChild(Object.assign(document.createElement('div'), { textContent: '°F' }));
 
   headerRight.appendChild(searchForm);
