@@ -71,8 +71,6 @@ const renderContents = (city, units) => {
     });
   });
 
-  getForecastData(city).then((data) => { console.log(data); });
-
   contents.appendChild(location);
   contents.appendChild(currentWeather);
   contents.appendChild(forecastWeek);
